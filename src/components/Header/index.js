@@ -1,10 +1,6 @@
-import React, { Component } from 'react'
-import { Button, TextField, Chip, AppBar,  } from 'material-ui/'
+import React, { Component, createContext } from 'react'
+import { Button, TextField, Chip, AppBar } from 'material-ui/'
 import GifCard from '../GifCard'
-
-import axios from 'axios';
-
-let links = [`parrot`, `office`, `schwarzeneger`, `stallion`, `hendrix`, `ylvis`, `casualties`, `dropkick murphiess`]
 
 
 const styles = {
@@ -16,8 +12,6 @@ const styles = {
     flexWrap: 'wrap',
   },
 };
-
-let gifs;
 
 let getGifs = (target) => {
   let apiKey = `iqI0VayKvcUJfucRqQSwx6MJMCH8br9d`;
@@ -37,28 +31,14 @@ let getGifs = (target) => {
   });
 }
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { giphy: '',
-                   data: []
-                  };
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  update(e) {
-    this.setState({ giphy: e.target.value })
-  }
-  handleSubmit(e) {
-    e.preventDefault();
-    this.setState({data: getGifs(this.state.giphy)})
-  }
+class Header extends React.Component { 
   
+  handleSubmit(e){
+    e.preventDefault()
+  }
+
   render () {
-    const gifData = this.state.data.map(gif => {
-      <GifCard gif={gif.images.fixed_height.url} still={gif.images.fixed_height_still.url} rating={gif.rating} />
-    }); 
-    
-    return (
+     return (
       <AppBar
         style={{
           background: 'purple',
@@ -75,16 +55,15 @@ class Header extends React.Component {
           <form>
             <TextField
               type='text'
-              value={this.state.giphy}
+              value={this.props.giphy}
               placeholder="search for something already!"
-              onChange={this.update.bind(this)}
+            
             />
             <Button type="submit" onClick={this.handleSubmit}>find</Button>
           </form>
           <div style={styles.wrapper}>  
           </div>
         </div>
-        {gifData}
       </AppBar>
 
     )

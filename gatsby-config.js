@@ -10,5 +10,6 @@ module.exports = {
         pathToTheme: 'src/themes/default',
       },
     },
+    `gatsby-plugin-react-next`
   ],
 }
