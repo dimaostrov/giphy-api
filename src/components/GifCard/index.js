@@ -13,19 +13,19 @@ const styles = {
   },
 };
 
-function SimpleMediaCard(props) {
+function GifCard(props) {
   const { classes } = props;
   return (
     <div>
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          image={classes.still}
+          gif={classes.gif}
         />
         <CardContent>
           <Typography component="p">
-            Rating
+            {classes.rating}
           </Typography>
         </CardContent>
       </Card>
@@ -33,8 +33,8 @@ function SimpleMediaCard(props) {
   );
 }
 
-SimpleMediaCard.propTypes = {
+GifCard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SimpleMediaCard);
+export default withStyles(styles)(GifCard);

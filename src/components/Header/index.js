@@ -17,9 +17,7 @@ const styles = {
   },
 };
 
-let gifData = (data) => {
-  
-}
+let gifs;
 
 let getGifs = (target) => {
   let apiKey = `iqI0VayKvcUJfucRqQSwx6MJMCH8br9d`;
@@ -31,7 +29,8 @@ let getGifs = (target) => {
     }
   })
   .then(function (response) {
-    console.log(response.data.data);
+    return response.data.data;
+    
   })
   .catch(function (error) {
     console.log(error);
@@ -41,18 +40,24 @@ let getGifs = (target) => {
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { giphy: ''};
+    this.state = { giphy: '',
+                   data: []
+                  };
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   update(e) {
     this.setState({ giphy: e.target.value })
   }
   handleSubmit(e) {
-    getGifs(this.state.giphy)
     e.preventDefault();
+    this.setState({data: getGifs(this.state.giphy)})
   }
   
   render () {
+    const gifData = this.state.data.map(gif => {
+      <GifCard gif={gif.images.fixed_height.url} still={gif.images.fixed_height_still.url} rating={gif.rating} />
+    }); 
+    
     return (
       <AppBar
         style={{
@@ -79,6 +84,7 @@ class Header extends React.Component {
           <div style={styles.wrapper}>  
           </div>
         </div>
+        {gifData}
       </AppBar>
 
     )

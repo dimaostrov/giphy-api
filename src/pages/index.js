@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Header from '../components/Header'
 import GifCard from '../components/GifCard'
 
-const IndexPage = () => (
+class IndexPage = () => (
   <div>
     <Header />
     <GifCard />
