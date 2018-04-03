@@ -1,5 +1,5 @@
 import React, { Component, createContext } from 'react'
-import { Button, TextField, Chip, AppBar } from 'material-ui/'
+import { Button, TextField, AppBar } from 'material-ui/'
 import GifCard from '../GifCard'
 
 
@@ -13,23 +13,7 @@ const styles = {
   },
 };
 
-let getGifs = (target) => {
-  let apiKey = `iqI0VayKvcUJfucRqQSwx6MJMCH8br9d`;
-  axios.get(`http://api.giphy.com/v1/gifs/search`, {
-    params: {
-      q: target,
-      api_key: apiKey,
-      limit: 10
-    }
-  })
-  .then(function (response) {
-    return response.data.data;
-    
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-}
+
 
 class Header extends React.Component { 
   
@@ -52,7 +36,11 @@ class Header extends React.Component {
             padding: '1.45rem 1.0875rem',
           }}
         >
-          <form>
+          <form
+            style={{
+              float: 'right'
+            }}
+          >
             <TextField
               type='text'
               value={this.props.giphy}
