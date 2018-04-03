@@ -48,6 +48,10 @@ class GifCard extends React.Component {
     return (
         <Card>
           <CardMedia 
+            style={{
+              height: '150px',
+              width: '150px'
+            }}
             image={this.state.current}
             onClick={this.handleClick}
           />

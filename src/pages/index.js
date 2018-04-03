@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from '../components/Header'
 import GifCard from '../components/GifCard'
 import { links } from '../utilities/util'
-import { Chip } from 'material-ui'
+import { Chip, TextField, Button } from 'material-ui'
 
 import axios from 'axios'
 
@@ -19,19 +19,23 @@ const styles = {
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { giphy: '', data: [].concat(links), gifs: [] }
+    this.state = { 
+      giphy: '', 
+      data: [].concat(links), 
+      gifs: [], 
+      value: ''};
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChipClick = this.handleChipClick.bind(this)
+    this.handleChange = this.handleChange.bind(this);
   }
   update(e) {
     this.setState({ giphy: e.target.value })
   }
   handleSubmit(e) {
+    this.setState({
+      data: [...this.state.data, this.state.value]
+    }) 
     e.preventDefault()
-    this.setState({ data: getGifs(this.state.giphy) })
-  }
-  retrieveGifs() {
-    //write function to make function call
   }
 
   getGifs = target => {
@@ -56,6 +60,10 @@ class IndexPage extends React.Component {
     this.getGifs(e.currentTarget.textContent)
   }
 
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  }
+
   render() {
     const chips = this.state.data.map(link => {
       return (
@@ -73,6 +81,21 @@ class IndexPage extends React.Component {
     return (
       <div>
         <div className="flex">{chips}</div>
+        <form
+            onSubmit={this.handleSubmit}
+            style={{
+              float: 'right',
+              marginTop: '-2rem'
+            }}
+          >
+            <TextField
+              type='text'
+              value={this.state.value}
+              onChange={this.handleChange}
+              placeholder="search for something!"
+            />
+            
+          </form>
         <div style={{
           display: 'flex',
           flexDirection: 'row',
