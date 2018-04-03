@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Card, { CardContent, CardMedia } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withStyles } from 'material-ui/styles'
+import Card, { CardContent, CardMedia } from 'material-ui/Card'
+import Typography from 'material-ui/Typography'
 
 const styles = {
   card: {
@@ -12,27 +11,26 @@ const styles = {
   media: {
     height: 200,
   },
-  };
-
-function GifCard(props) {
-  const { classes } = props;
-  return (
-    <div>
-      <Card className={classes.card}>
-        <CardMedia
-          className={classes.media}
-          image={classes.still}
-          gif={classes.gif}
-        />
-        <CardContent>
-          <Typography component="p">
-            {classes.rating}
-          </Typography>
-        </CardContent>
-      </Card>
-    </div>
-  );
 }
 
+function GifCard(props) {
+  return (
+    <div style={{
+      maxWidth: '100px'
+    }}>
+      <Card>
+        <CardMedia
+          overlay={
+            <CardContent>
+              <Typography component="p">{'Rating: ' + props.rating}</Typography>
+            </CardContent>
+          }
+          image={props.src}
+          gif={props.gif}
+        />
+      </Card>
+    </div>
+  )
+}
 
-export default withStyles(styles)(GifCard);
+export default withStyles(styles)(GifCard)
