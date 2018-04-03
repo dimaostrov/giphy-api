@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import Card, { CardContent, CardMedia } from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
+import style from './style.css'
 
 const styles = {
   card: {
@@ -13,10 +14,11 @@ const styles = {
   },
 }
 
-function GifCard(props) {
+class GifCard extends React.Component(props) {
   return (
     <div style={{
-      maxWidth: '100px'
+      minWidth: '100px',
+      minHeight: '100px'
     }}>
       <Card>
         <CardMedia
@@ -33,4 +35,5 @@ function GifCard(props) {
   )
 }
 
-export default withStyles(styles)(GifCard)
+export default GifCard
+//export default withStyles(styles)(GifCard)

@@ -82,7 +82,11 @@ class IndexPage extends React.Component {
     return (
       <div>
         <div className="flex">{chips}</div>
-        <div className="flex">{gifs}</div>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'wrap'
+        }}>{gifs}</div>
       </div>
     )
   }
