@@ -1,3 +1,3 @@
 import axios from 'axios';
 
-export let links = [`parrot`, `office`, `schwarzeneger`, `stallion`, `hendrix`, `ylvis`, `casualties`, `dropkick murphiess`]
+export let links = [`parrot`, `office`, `schwarzenegger`, `stallion`, `hendrix`, `ylvis`, `casualties`, `dropkick murphys`]

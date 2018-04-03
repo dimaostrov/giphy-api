@@ -33,6 +33,7 @@ class IndexPage extends React.Component {
   retrieveGifs() {
     //write function to make function call
   }
+
   getGifs = target => {
     let apiKey = `iqI0VayKvcUJfucRqQSwx6MJMCH8br9d`
     axios
@@ -52,7 +53,7 @@ class IndexPage extends React.Component {
   handleChipClick(e) {
     e.preventDefault();
     this.setState({ giphy: e.currentTarget.textContent });
-    this.getGifs(this.state.giphy)
+    this.getGifs(e.currentTarget.textContent)
   }
 
   render() {
@@ -67,16 +68,6 @@ class IndexPage extends React.Component {
       )
     })
     const display = (this.state.gifs.length > 0) 
-    const gifs = display ? this.state.gifs.map((gif, i) => {
-        return (
-          <GifCard
-            key={i}
-            src={gif.images.downsized_still.url}
-            gif={gif.images.downsized.url}
-            rating={gif.rating}
-          />
-        )
-      }) : '';
     
 
     return (
@@ -86,7 +77,18 @@ class IndexPage extends React.Component {
           display: 'flex',
           flexDirection: 'row',
           flexWrap: 'wrap'
-        }}>{gifs}</div>
+        }}>
+        {display ? this.state.gifs.map((gif, i) => {
+        return (
+          <GifCard
+            key={i}
+            src={gif.images.downsized_still.url}
+            gif={gif.images.downsized.url}
+            rating={gif.rating}
+          />
+          )
+        }) : ''}
+      </div>
       </div>
     )
   }
