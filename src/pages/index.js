@@ -33,8 +33,10 @@ class IndexPage extends React.Component {
   }
   handleSubmit(e) {
     this.setState({
-      data: [...this.state.data, this.state.value]
+      data: [...this.state.data, this.state.value],
+      value: ''
     }) 
+
     e.preventDefault()
   }
 
@@ -80,12 +82,10 @@ class IndexPage extends React.Component {
 
     return (
       <div>
-        <div className="flex">{chips}</div>
         <form
             onSubmit={this.handleSubmit}
             style={{
-              float: 'right',
-              marginTop: '-2rem'
+              float: 'right'
             }}
           >
             <TextField
@@ -96,6 +96,7 @@ class IndexPage extends React.Component {
             />
             
           </form>
+        <div className="flex">{chips}</div>
         <div style={{
           display: 'flex',
           flexDirection: 'row',
