@@ -1,6 +1,7 @@
 module.exports = {
+  pathPrefix: `/giphy-api`,
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Giffer',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

@@ -41,7 +41,7 @@ class IndexPage extends React.Component {
   getGifs = target => {
     let apiKey = `iqI0VayKvcUJfucRqQSwx6MJMCH8br9d`
     axios
-      .get(`http://api.giphy.com/v1/gifs/search`, {
+      .get(`https://api.giphy.com/v1/gifs/search`, {
         params: {
           q: target,
           api_key: apiKey,
